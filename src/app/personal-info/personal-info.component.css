@@ -1,0 +1,22 @@
+
+.form-group input, .form-group label {
+    font-size: 14px;
+}
+label {
+    color: blue;
+}
+.address {
+    display: block;
+}
+.address.col-md-6 textarea {
+    height: 120px;
+}
+h3{
+	margin-top: 20px;
+    font-size: 26px;
+    text-align: center;
+    color: blue;
+}
+.dob-width{
+  width : 16%
+}

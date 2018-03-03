@@ -1,0 +1,29 @@
+<table class="table">
+  <thead >
+    <tr >
+      <th >Sr. No</th>
+      <th >Firstname</th>
+      <th >Middlename</th>
+      <th >Lastname</th>
+      <th >D.O.B</th>
+      <th >Mobile Number</th>
+      <th >Emergence Number</th>
+      <th >Email-id</th>
+      <!--th >Delete</th-->
+    </tr>
+  </thead>
+
+    <tbody >
+      <tr  *ngFor="let member of teamMemberDetailsList;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{member.firstname}}</td>
+        <td>{{member.middlename}}</td>
+        <td>{{member.lastname}}</td>
+        <td>{{getDOB(member.dob)}}</td>
+        <td>{{member.contactno}}</td>
+        <td>{{member.alternativeno}}</td>
+        <td>{{member.email}}</td>
+        <!--td (click)="delete(i)"><i class="fa fa-remove fa-fw fa-2x"></i></td-->
+      </tr>
+    </tbody>
+</table>

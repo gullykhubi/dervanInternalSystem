@@ -1,0 +1,35 @@
+<app-reporting-kyc *ngIf="newP" [fromPayment]="'yes'" (getInfo)="getData($event)">
+</app-reporting-kyc>
+<div *ngFor="let e of err" class="alert alert-danger" role="alert">
+{{e}}
+</div>
+<div class="fluid-container">
+  <div class="row" *ngIf="receiptnumber === undefined">
+    <div class="form-group col-md-4  col-sm-12">
+      <label for="cashierName">Cashier Name</label>
+      <input class="form-control" id="cashierName"  [(ngModel)]="cashierName" name="cashierName" placeholder="Cashier Name" type="text">
+    </div>
+    <div class="form-group col-md-4  col-sm-12">
+      <label for="modeOfPayment">Mode of Payment</label>
+      <select  class="form-control"  id="modeOfPayment" [(ngModel)]="modeOfPayment" name="modeOfPayment">
+        <option value="CASH">CASH</option>
+        <option value="NEFT">NEFT</option>
+        <option value="Bank Deposit">Bank Deposit</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4  col-sm-12">
+      <label for="refNo">Ref No</label>
+      <input class="form-control" id="refNo"  [(ngModel)]="refNo" name="refNo" placeholder="Ref No" type="text">
+    </div>
+  </div>
+  <div class="row"  *ngIf="receiptnumber === undefined">
+    <div class="form-group col-md-12  col-sm-12 text-center">
+      <button class="btn btn-primary payment-received" (click)="receivedPayment()">Received Payment</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="receiptnumber">
+    <div class="form-group col-md-12  col-sm-12 text-center">
+      <button class="btn btn-primary payment-received" (click)="newPayment()">New Payment</button> <button class="btn btn-primary payment-received" (click)="printReceipt()">Print Receipt</button>
+    </div>
+  </div>
+</div>

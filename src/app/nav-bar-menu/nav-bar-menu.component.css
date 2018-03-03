@@ -1,0 +1,11 @@
+.nav-container .header-list ,.nav-container .header-list .menu-items{
+  list-style-type: none;
+  padding-left: 15px;
+}
+.nav-container .header-list .header-title{
+  font-size: 26px;
+  padding: 10px 5px;
+  color: #666;
+  font-weight: bold;
+  border: 1px solid orangered;
+}

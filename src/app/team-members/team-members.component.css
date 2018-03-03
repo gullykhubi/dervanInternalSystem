@@ -1,0 +1,12 @@
+.form-group input, .form-group label {
+    font-size: 14px;
+}
+.label{
+  font-size: 14px;
+}
+label {
+    color: blue;
+}
+.dob-width{
+  width : 16%
+}

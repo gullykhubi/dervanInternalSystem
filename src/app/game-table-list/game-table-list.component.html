@@ -1,0 +1,72 @@
+<table class="table table-bordered mt-3">
+  <thead>
+    <tr>
+      <td>
+        Game#
+      </td>
+      <td>
+        Game Name
+      </td>
+      <td>
+        Game Type
+      </td>
+      <td>
+        Fees
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of eventSelected; let ind = index ">
+      <td>
+        {{ind+1}}
+      </td>
+      <td>
+        {{game.name}}
+      </td>
+      <td>
+        {{game.text}}
+      </td>
+      <td>
+        {{amount}}
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+        Total Amount
+      </td>
+      <td>
+        {{eventSelected.length * amount}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+        G.S.T 18%:
+      </td>
+      <td>
+        {{eventSelected.length * amount*0.18}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+        Total Amount Payable:
+      </td>
+      <td>
+        {{(eventSelected.length * amount + eventSelected.length * amount * 0.18)}}
+      </td>
+    </tr>
+  </tfoot>
+</table>

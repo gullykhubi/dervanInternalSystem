@@ -1,0 +1,83 @@
+<div class="fluid-container">
+  <div class="row">
+    <div class="form-group col-md-3  col-sm-12">
+        <label for="type">Select Mode</label>
+        <select class="form-control " id="discipline" name="discipline"  [ngModel]="type"  (ngModelChange)="getDisciplines($event)">
+          <option value="1">Individual</option>
+          <option value="2">Team</option>
+        </select>
+      </div>
+    <div class="form-group col-md-3  col-sm-12" *ngIf="type!=undefined">
+      <label for="discipline">Discipline</label>
+      <select class="form-control " id="discipline" name="discipline"  [(ngModel)]="discipline">
+        <option *ngFor="let disci of disiplineArr" [value]="disci">{{disci}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3  col-sm-12" *ngIf="type!=undefined">
+      <label for="gender">Gender</label>
+      <select class="form-control " id="gender" name="gender"  [(ngModel)]="gender" (ngModelChange)="getGames()">
+        <option value="B">Male</option>
+        <option value="G">Female</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3  col-sm-12" *ngIf="type!=undefined">
+      <label for="game">Games</label>
+      <select class="form-control " id="game" name="game"  [(ngModel)]="game">
+        <option *ngFor="let game of selectedGames" [value]="getKey(game)">{{game[getKey(game)]}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row" *ngIf="type!=undefined">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-primary" (click)="getPlayers()">Get Player List</button>
+    </div>
+  </div>
+  <div  *ngIf="playerList!=undefined && playerList.length>0" >
+    <table class="table table-bordered text-center">
+      <thead>
+      <tr>
+
+          <th>
+            Sr. No
+          </th>
+        <th>
+          ID
+        </th>
+        <th>
+          Full Name
+        </th>
+        <th>
+          SEED
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of playerList;let i = index">
+        <td>
+          {{(i+1)}}
+        </td>
+        <td>
+          {{player.partTeamID}}
+        </td>
+        <td>
+          {{player.firstTeamName+' '+player.lastTeamSchoolName}}
+        </td>
+        <td>
+          <input  class="form-control " type="text" [(ngModel)]="player.seed"/>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button class="btn btn-primary" (click)="submit()">Draw Matches</button>
+      </div>
+    </div>
+    <!--div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary" (click)="printMatches()">Print Matches</button>
+      </div>
+    </div-->
+  </div>
+</div>

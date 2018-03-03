@@ -1,0 +1,25 @@
+<div class="row selectModeContainer">
+  <h6 class="col-md-12 col-sm-12  text-center"  style="font-weight:bold">
+    Select the Event Category
+  </h6>
+  <div class="col-md-12 col-sm-12 text-center modeSelection">
+    <div>
+      <span class="ind selected" [ngClass]="{'selected' : this.commonService.selectMode === 'ind'}" (click)="this.commonService.selectMode = 'ind'">
+        <i aria-hidden="true" class="fa fa-user-circle-o"></i>
+        INDIVIDUAL EVENT
+      </span>
+      <span class="team"  [ngClass]="{'selected' : this.commonService.selectMode === 'team'}" (click)="this.commonService.selectMode = 'team'">
+        TEAM EVENT
+        <i  aria-hidden="true" class="fa fa-group"></i>
+      </span>
+    </div>
+    <button class="btn btn-primary" (click)="commonService.currentPage = 'personalInfo' ">Click to Proceed</button>
+  </div>
+  <div class="col-md-12">
+    <ol>
+      <li>If you are using Internet Explorer, please use version 10 and above</li>
+      <li>If you are using Chrome, please use version 60 and above</li>
+      <li>For any further assistance please contact our helpdesk on 9130004972 / 9049709556</li>
+    </ol>
+  </div>
+</div>

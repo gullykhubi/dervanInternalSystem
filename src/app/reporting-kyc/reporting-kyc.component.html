@@ -1,0 +1,48 @@
+<div class="fluid-container">
+  <div class="row">
+    <div class="form-group col-md-6  col-sm-12">
+      <label for="pnr-no">PRN No of {{(this.commonService.selectMode === 'ind')? 'Individual' : 'Captian'}} </label>
+      <input class="form-control " id="pnr-no" name="pnrno"  [(ngModel)]="prnno" placeholder="PNR No" type="text">
+    </div>
+    <!--div class="form-group col-md-6  col-sm-12">
+      <label for="mobile-no">Moble Number </label>
+      <input class="form-control " id="mobile-no" name="mobileno"  [(ngModel)]="mobileno" placeholder="Mobile No" type="text">
+    </div-->
+  </div>
+  <div class="row">
+    <div class="form-group col-md-12  col-sm-12 text-center">
+      <button class="btn btn-primary" (click)="getDetails()">Get Details</button>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+    <button class="btn btn-primary" *ngIf="partiDetails && fromPayment !== 'yes'" (click)="editPersonalINfo()"> Edit Personal-Info</button>
+    <!-- <button class="btn btn-primary" *ngIf="partiDetails && fromPayment !== 'yes' && this.commonService.selectMode=='ind'" (click)="createNew()"> Create New</button> -->
+  </div>
+  <div>
+  <app-personal-info *ngIf="partiDetails" [partid] = "prnno" (edited)="edited()" [participantDetails]="partiDetails" [fromReporting] ="fromReporting" ></app-personal-info>
+  <app-team-members-table-list  *ngIf="this.commonService.selectMode=== 'team' && memberDetalis" [memberDetails]="memberDetalis">
+  </app-team-members-table-list>
+  <app-game-table-list *ngIf="eventSelected" [eventSelected] = "eventSelected" > </app-game-table-list>
+<ng-container  *ngIf="fromPayment !== 'yes'">
+  <div *ngFor="let e of err" class="alert alert-danger" role="alert">
+  {{e}}
+  </div>
+</ng-container>
+  <div class="row" *ngIf="fromPayment !== 'yes'">
+    <div class="form-group col-md-3  col-sm-12">
+      <label><input  id="kycCheck" name="kycCheck"  [(ngModel)]="kycCheck" [checked]="kycCheck" type="checkbox">K Y C Check</label>
+    </div>
+    <div class="form-group col-md-3  col-sm-12">
+      <label><input  id="reporting" name="reporting"  [(ngModel)]="reporting" [checked]="reporting" type="checkbox">Reporting</label>
+    </div>
+    <div class="form-group col-md-3  col-sm-12">
+      <label><input  id="reporting" name="reporting"  [(ngModel)]="paymentFlag" [checked]="paymentFlag" [disabled]="true" type="checkbox">Payment Received</label>
+    </div>
+    <div class="form-group col-md-3  col-sm-12">
+      <button class="btn btn-primary" [disabled]="!paymentFlag" (click) = "submit()">Submit</button>
+    </div>
+  </div>
+</div>
+</div>
